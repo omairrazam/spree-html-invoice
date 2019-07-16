@@ -11,18 +11,11 @@ module Spree
         respond_to do |format|
           format.html
           format.pdf do
-            @pdf = render_to_string :pdf => 'invoice',:zoom => '3.78125',:template => 'spree/admin/invoice/show.html.erb', :encoding => "UTF-8"
+            @pdf = render_to_string :pdf => 'invoice',:zoom => '3.000',:template => 'spree/admin/invoice/show.html.erb', :encoding => "UTF-8"
             send_data(@pdf, :filename => 'invoice.pdf', :type=>'application/pdf')
           end
         end
-
-        # respond_to do |format|
-        #   format.html
-        #   format.pdf do
-        #     render :pdf => "file.pdf", :template => 'show.html.erb', layout: false
-        #   end
-        # end
-
+        
       end
     end
   end
