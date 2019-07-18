@@ -111,7 +111,7 @@
                     <% end %>
                     <td style="font-family: 'Montserrat', sans-serif; font-size:16px; font-weight:300; width:55%;padding-left: 20px;"><%= vl.quantity %>
                       X &nbsp<%= product.fullname rescue product.name %></td>
-                    <td style="font-family: 'Montserrat', sans-serif; font-size:16px; font-weight:500; width:35%; text-align:right;"><%= vl.display_price.to_html unless @receipt %></td>
+                    <td style="font-family: 'Montserrat', sans-serif; font-size:16px; font-weight:500; width:35%; text-align:right;"><%=Spree::Money.new(vl.quantity *  vl.price, currency: @order.currency).to_html unless @receipt %></td>
                   </tr>
                 <% end %>
               <% end %>
@@ -136,8 +136,7 @@
                   <%= item.quantity %>
                   X <%= product.name %>
                 </td>
-                
-                <td style="font-family: 'Montserrat', sans-serif; font-size:16px; font-weight:500; width:35%; text-align:right;"><%= item.display_price.to_html unless @receipt %></td>
+                <td style="font-family: 'Montserrat', sans-serif; font-size:16px; font-weight:500; width:35%; text-align:right;"><%= Spree::Money.new(item.quantity *  item.price, currency: @order.currency).to_html unless @receipt %></td>
               </tr>
               </tbody>
             </table>
