@@ -61,7 +61,7 @@
               <% else %>
                 <%= @order.ship_address.try(:address2) %>, <br>
               <% end %>
-              <%= @order.ship_address.city %>,<%= @order.ship_address.state.try(:name) %>,<br>
+              <%= @order.ship_address.city_state_info %>,<br>
               <%= @order.ship_address.country.try(:name) %></li>
           <% end %>
         </ul>
