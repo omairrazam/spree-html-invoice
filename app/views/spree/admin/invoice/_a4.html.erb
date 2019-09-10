@@ -61,7 +61,7 @@
               <% else %>
                 <%= @order.ship_address.try(:address2) %>, <br>
               <% end %>
-              <%= @order.ship_address.city %>,<%= @order.ship_address.state.try(:name) %>,<br>
+              <%= @order.ship_address.city_state_info %>,<br>
               <%= @order.ship_address.country.try(:name) %></li>
           <% end %>
         </ul>
@@ -82,7 +82,7 @@
           On: <%= @order.updated_at.strftime("%d/%m/%Y") %>, Items: <%= @order.item_count %> |
           Personalised:  <%= @order.is_parent? ? @order.sub_orders.map(&:line_items).flatten.select {|li| li.personalized_info.present?}.count : @order.line_items.select{|s|s.personalized_info.present?}.count%></li>
         <li style="font-family: 'Montserrat', sans-serif; font-size:15px; font-weight:500; width:35%;padding-left: 10px;">Payment
-          Method: Online Currency: AED          
+          Method: Online Currency: <%= @order.currency%>           
         </li>
       </ul>
       <div class="wit" style="width:80%;">
